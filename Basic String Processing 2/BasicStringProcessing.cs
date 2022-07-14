@@ -11,18 +11,16 @@ namespace Basic_String_Processing_2
             do
             {
                 GetWord(); 
-            } while(Continue());
-
+            } while(Continue("Would you like to continue Y/N?"));
             Clear();
 
             foreach(var item in words)
             {
                 Write(item + " ");
             }
-            WriteLine("\nPress any key to continue.");
+            WriteLine("\n\nPress any key to continue.");
             ReadKey();
         }
-
 
         private void GetWord()
         {
@@ -33,11 +31,11 @@ namespace Basic_String_Processing_2
         private static string[] yes = { "yes", "y", "yup" };
         private static string[] no = { "no", "n", "nope" };
 
-        private bool Continue()
+        public static bool Continue(string description)
         {
             do
             {
-                Write("Would you like to continue Y/N?");
+                Write(description);
                 string input = ReadLine().ToLower().Trim();
                 if(yes.Contains(input)) return true;
                 else if(no.Contains(input)) return false; 
